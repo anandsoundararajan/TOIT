@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Region id="0BE88DF3C854477AB7AB094890B8AE35" identifier="West Bengal">
+    <id>0BE88DF3C854477AB7AB094890B8AE35</id>
+    <active>true</active>
+    <name>West Bengal</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>WB</searchKey>
+  </Region>
+  <Region id="0C85B1ED7B1E4831B2CF212B86B33934" identifier="Jharkhand">
+    <id>0C85B1ED7B1E4831B2CF212B86B33934</id>
+    <active>true</active>
+    <name>Jharkhand</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>JH</searchKey>
+  </Region>
+  <Region id="0E2A941EFE594A1C91AA8BA85F0D3A3F" identifier="Haryana">
+    <id>0E2A941EFE594A1C91AA8BA85F0D3A3F</id>
+    <active>true</active>
+    <name>Haryana</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>HR</searchKey>
+  </Region>
+  <Region id="11D9DBE3AEBC4838810BE66089D11A41" identifier="Tamil Nadu">
+    <id>11D9DBE3AEBC4838810BE66089D11A41</id>
+    <active>true</active>
+    <name>Tamil Nadu</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>TN</searchKey>
+  </Region>
+  <Region id="15641901D2BA47F79AF600032DB9BC8D" identifier="Chandigarh">
+    <id>15641901D2BA47F79AF600032DB9BC8D</id>
+    <active>true</active>
+    <name>Chandigarh</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>CH</searchKey>
+  </Region>
+  <Region id="1D0AD67430BC47B9B9E1F23CDEAAF140" identifier="Gujarat">
+    <id>1D0AD67430BC47B9B9E1F23CDEAAF140</id>
+    <active>true</active>
+    <name>Gujarat</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>GJ</searchKey>
+  </Region>
+  <Region id="2125E4D7030F4380AF271D78BD6E29E2" identifier="Assam">
+    <id>2125E4D7030F4380AF271D78BD6E29E2</id>
+    <active>true</active>
+    <name>Assam</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>AS</searchKey>
+  </Region>
+  <Region id="328B7AC7489845368F6F1F3834669F07" identifier="Uttar Pradesh">
+    <id>328B7AC7489845368F6F1F3834669F07</id>
+    <active>true</active>
+    <name>Uttar Pradesh</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>UP</searchKey>
+  </Region>
+  <Region id="336D017596AB4D478543B4C1E0704157" identifier="Tripura">
+    <id>336D017596AB4D478543B4C1E0704157</id>
+    <active>true</active>
+    <name>Tripura</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>TR</searchKey>
+  </Region>
+  <Region id="463894FA0C814661BDE49684AEEE9620" identifier="Manipur">
+    <id>463894FA0C814661BDE49684AEEE9620</id>
+    <active>true</active>
+    <name>Manipur</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>MN</searchKey>
+  </Region>
+  <Region id="5132570267CA4759B7771634B1F5AB07" identifier="Mizoram">
+    <id>5132570267CA4759B7771634B1F5AB07</id>
+    <active>true</active>
+    <name>Mizoram</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>MZ</searchKey>
+  </Region>
+  <Region id="52F16D801BEC4118B59D16E8F8CEB699" identifier="Delhi">
+    <id>52F16D801BEC4118B59D16E8F8CEB699</id>
+    <active>true</active>
+    <name>Delhi</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>DL</searchKey>
+  </Region>
+  <Region id="544D9DD17CD346E3BDB5A91399B25B56" identifier="Daman &amp; Diu">
+    <id>544D9DD17CD346E3BDB5A91399B25B56</id>
+    <active>true</active>
+    <name>Daman &amp; Diu</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>DD</searchKey>
+  </Region>
+  <Region id="5AA403BE4743401C9F85DDC9EAA9D333" identifier="Dadra and Nagar Haveli">
+    <id>5AA403BE4743401C9F85DDC9EAA9D333</id>
+    <active>true</active>
+    <name>Dadra and Nagar Haveli</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>DN</searchKey>
+  </Region>
+  <Region id="60C52D97A83843249F72B9FD06616385" identifier="Himachal Pradesh">
+    <id>60C52D97A83843249F72B9FD06616385</id>
+    <active>true</active>
+    <name>Himachal Pradesh</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>HP</searchKey>
+  </Region>
+  <Region id="61FFB4F3C7B247C0B79D991C4D8C5180" identifier="Maharashtra">
+    <id>61FFB4F3C7B247C0B79D991C4D8C5180</id>
+    <active>true</active>
+    <name>Maharashtra</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>MH</searchKey>
+  </Region>
+  <Region id="67ACACE507E743DAB56D28D5886FD007" identifier="Nagaland">
+    <id>67ACACE507E743DAB56D28D5886FD007</id>
+    <active>true</active>
+    <name>Nagaland</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>NL</searchKey>
+  </Region>
+  <Region id="73C4ABDD65594D44A736CF3CFAE77288" identifier="Lakshadweep">
+    <id>73C4ABDD65594D44A736CF3CFAE77288</id>
+    <active>true</active>
+    <name>Lakshadweep</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>LD</searchKey>
+  </Region>
+  <Region id="780DF7F6FEAB4585BA5D1FB646654CE2" identifier="Kerala">
+    <id>780DF7F6FEAB4585BA5D1FB646654CE2</id>
+    <active>true</active>
+    <name>Kerala</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>KL</searchKey>
+  </Region>
+  <Region id="7B7D591FD6A24077B12D1536730D85EA" identifier="Andaman &amp; Nicobar">
+    <id>7B7D591FD6A24077B12D1536730D85EA</id>
+    <active>true</active>
+    <name>Andaman &amp; Nicobar</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>AN</searchKey>
+  </Region>
+  <Region id="7D4704E7FC74433FA565501D070F3F57" identifier="Puducherry">
+    <id>7D4704E7FC74433FA565501D070F3F57</id>
+    <active>true</active>
+    <name>Puducherry</name>
+    <description>It belongs to union territory</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>PY</searchKey>
+  </Region>
+  <Region id="9EEDA886010E47D5A6649126AC34869B" identifier="Rajasthan">
+    <id>9EEDA886010E47D5A6649126AC34869B</id>
+    <active>true</active>
+    <name>Rajasthan</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>RJ</searchKey>
+  </Region>
+  <Region id="A3E94F4C6FC14CC28DB2ACAF6F427FA7" identifier="Punjab">
+    <id>A3E94F4C6FC14CC28DB2ACAF6F427FA7</id>
+    <active>true</active>
+    <name>Punjab</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>PB</searchKey>
+  </Region>
+  <Region id="A41131489A2B47A7AAEC861A0A27B1DA" identifier="Sikkim">
+    <id>A41131489A2B47A7AAEC861A0A27B1DA</id>
+    <active>true</active>
+    <name>Sikkim</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>SK</searchKey>
+  </Region>
+  <Region id="A598932E7F274F049C128CAB6DC5C9D0" identifier="Chattisgarh">
+    <id>A598932E7F274F049C128CAB6DC5C9D0</id>
+    <active>true</active>
+    <name>Chattisgarh</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>CT</searchKey>
+  </Region>
+  <Region id="C44334E0701B46CB8164A377558E641F" identifier="Madhya Pradesh">
+    <id>C44334E0701B46CB8164A377558E641F</id>
+    <active>true</active>
+    <name>Madhya Pradesh</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>MP</searchKey>
+  </Region>
+  <Region id="CD5B705CCEDD4F8D9A275936C67978D9" identifier="Andhra Pradesh">
+    <id>CD5B705CCEDD4F8D9A275936C67978D9</id>
+    <active>true</active>
+    <name>Andhra Pradesh</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>AP</searchKey>
+  </Region>
+  <Region id="CEEF82702B714ADAB57D9A921C90536A" identifier="Orissa">
+    <id>CEEF82702B714ADAB57D9A921C90536A</id>
+    <active>true</active>
+    <name>Orissa</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>OR</searchKey>
+  </Region>
+  <Region id="CF3287065A2344A9A2BF37577922AAC8" identifier="Uttarakhand">
+    <id>CF3287065A2344A9A2BF37577922AAC8</id>
+    <active>true</active>
+    <name>Uttarakhand</name>
+    <description>Formerly it is called as Uttaranchal</description>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>UL</searchKey>
+  </Region>
+  <Region id="D13C2865E98143E18BDBF833666286C5" identifier="Arunachal Pradesh">
+    <id>D13C2865E98143E18BDBF833666286C5</id>
+    <active>true</active>
+    <name>Arunachal Pradesh</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>AR</searchKey>
+  </Region>
+  <Region id="D92FFE5D9E004DAAB248D3C07D610449" identifier="Karnataka">
+    <id>D92FFE5D9E004DAAB248D3C07D610449</id>
+    <active>true</active>
+    <name>Karnataka</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>KA</searchKey>
+  </Region>
+  <Region id="DC6D68B1CE76448A9DDE77841E529D36" identifier="Jammu &amp; Kashmir">
+    <id>DC6D68B1CE76448A9DDE77841E529D36</id>
+    <active>true</active>
+    <name>Jammu &amp; Kashmir</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>JK</searchKey>
+  </Region>
+  <Region id="E7ED6328ADBC41AB966386251767FAA0" identifier="Goa">
+    <id>E7ED6328ADBC41AB966386251767FAA0</id>
+    <active>true</active>
+    <name>Goa</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>GA</searchKey>
+  </Region>
+  <Region id="EA3ADC1BA4CB4D848BB91EA505615C04" identifier="Meghalaya">
+    <id>EA3ADC1BA4CB4D848BB91EA505615C04</id>
+    <active>true</active>
+    <name>Meghalaya</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>ML</searchKey>
+  </Region>
+  <Region id="F3C0C9CDA4C04E5D8113A9F4B1E5A74E" identifier="Bihar">
+    <id>F3C0C9CDA4C04E5D8113A9F4B1E5A74E</id>
+    <active>true</active>
+    <name>Bihar</name>
+    <description xsi:nil="true"/>
+    <country id="208" entity-name="Country" identifier="India"/>
+    <default>false</default>
+    <searchKey>BR</searchKey>
+  </Region>
+  <Country id="208" identifier="India">
+    <hasRegions>true</hasRegions>
+    <name>India</name>
+    <iSOCountryCode>IN</iSOCountryCode>
+  </Country>
+</ob:Openbravo>

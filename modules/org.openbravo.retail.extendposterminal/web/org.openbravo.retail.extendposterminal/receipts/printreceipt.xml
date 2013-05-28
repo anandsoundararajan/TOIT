@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<output>
+  <ticket>
+    <line>
+      <text align="center" length="42"><%= OB.UTIL.encodeXMLComponent('This is')%></text>
+    </line>
+    <line>
+      <text align="center" length="42"><%= OB.UTIL.encodeXMLComponent('a customized ticket')%></text>
+    </line>
+  </ticket>
+ 
+  <display>
+      <line>
+        <text align="left" length="10"><%= OB.UTIL.encodeXMLComponent('This is a customized display')%></text>
+      </line>
+  </display>
+ 
+  <opendrawer/>
+</output>

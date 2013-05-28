@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" manifest="../../org.openbravo.client.kernel/OBPOS_Main/AppCacheManifest">
+<head>
+  <title>Openbravo POS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Openbravo Point of Sale window">
+  <meta name="author" content="Openbravo, S.L.U.">
+
+  <!--  Apple application capable attributes -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <link rel="apple-touch-startup-image" href="img/openbravopos.png"/>
+
+  <!-- Application icons -->
+  <link rel="apple-touch-icon" href="img/openbravopos57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="img/openbravopos72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="img/openbravopos114x114.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="../../web/images/favicon.ico" />
+
+  <link rel="stylesheet" type="text/css" href="js/libs/enyo.css">
+  <link rel="stylesheet" type="text/css" href="js/libs/onyx/onyx.css">
+
+  <link rel="stylesheet" type="text/css" href="css/standard.css" />
+  <link rel="stylesheet" type="text/css" href="css/login.css" />
+</head>
+
+<body class="enyo-body-fit webkitOverflowScrolling" style="background-color: darkgray; background: url(img/BACKGROUND-PNG24.png) top left">
+  <script src="../org.openbravo.client.kernel/js/BigDecimal-all-1.0.1.min.js"></script>
+
+  <script src="../org.openbravo.client.kernel/js/LAB.min.js"></script>
+  <script src="js/libs/jquery-1.7.2.js"></script>
+  <script src="js/libs/underscore-1.3.3.js"></script>
+  <script src="js/libs/backbone-0.9.2.js"></script>
+  <script src="js/libs/moment-1.7.2.min.js"></script>
+  <script src="js/libs/core-min.js"></script>
+  <script src="js/libs/sha1-min.js"></script>
+  <script src="js/libs/enyo.js"></script>
+  <script src="js/libs/onyx/onyx.js"></script>
+
+  <!-- Login application -->
+  <script src="../org.openbravo.client.application/js/utilities/ob-utilities-date.js"></script>
+  <script src="js/datasource.js"></script>
+  <script src="js/utilities.js"></script>
+  <script src="js/utilitiesui.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components/clock.js"></script>
+  <script src="js/model/terminal.js"></script>
+  <script src="js/components/terminal.js"></script>
+  <script src="js/login/model/login-model.js"></script>
+  <script src="js/components/commonbuttons.js"></script>
+  <script src="js/login/view/login.js"></script>
+  <script src="js/data/dal.js"></script>
+
+  <script src="js/model/product-category.js"></script>
+  <script src="js/model/product.js"></script>
+  <script src="js/model/businesspartner.js"></script>
+  <script src="js/model/document-sequence.js"></script>
+  <script src="js/model/user.js"></script>
+  <script src="js/model/session.js"></script>
+  <script src="js/arithmetic.js"></script>
+  <script src="js/model/order.js"></script>
+  <script>
+    (function () {
+      window.addEventListener('load', function (e) {
+        window.applicationCache.addEventListener('updateready', function (e) {
+          if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+            OB.Dal.find(OB.Model.Order, {}, function (orders) {
+              if (orders.models.length == 0) {
+                //There are no pending orders, we can safely swap the cache
+                window.applicationCache.swapCache();
+                window.location.reload();
+              } else {
+                OB.POS.terminal.$.containerWindow.$.LoginWindow.$.DatabaseDialog.show();
+              }
+            }, function () {
+              window.console.error(arguments);
+            });
+          } else {
+            // Manifest didn't change
+          }
+        }, false);
+      }, false);
+    }());
+  </script>
+  <script>
+    (function () {
+      function resizeWindow() {
+        // console.log('resize');
+        var winHeight = window.innerHeight,
+            percentage;
+        if (winHeight < 740) {
+          percentage = window.innerHeight * 100 / 740;
+          percentage = Math.floor(percentage) / 100;
+          document.body.style.zoom = percentage;
+        } else if (document.body.style.zoom < 1) {
+          document.body.style.zoom = 1;
+        }
+      }
+      resizeWindow();
+      window.onresize = function () {
+        resizeWindow();
+      };
+    }());
+  </script>
+  <script>
+    // Hack focus captured by location bar in android browser.
+    (function () {
+      function renderPOS() {
+        OB.POS.terminal.renderInto(document.body);
+
+        OB.UTIL.checkConnectivityStatus(); //Initial check;
+        setInterval(OB.UTIL.checkConnectivityStatus, 5000);
+      };
+
+      function showUnknowTerminalError(){
+        var d = new Date();
+        document
+        .getElementById('terminal_containerWindow_login_control5').style.display = "block";
+        document
+        .getElementById('terminal_containerWindow_login_loginUnknowTerminal').style.display = "block";
+        document
+        .getElementById('terminal_containerWindow_login_loginUnknowTerminal_Title_Lbl').innerHTML = OB.I18N.getLabel('OBPOS_NO_POS_TERMINAL_TITLE', [OB.POS.paramTerminal]);
+        document
+            .getElementById('terminal_containerWindow_login_loginUnknowTerminal_P1_Lbl').innerHTML = OB.I18N.getLabel('OBPOS_NO_POS_TERMINAL_MSG', [OB.POS.paramTerminal]);
+        document
+        .getElementById('terminal_containerWindow_login_clock2_clock').innerHTML = OB.I18N.formatHour(d);
+        document
+            .getElementById('terminal_containerWindow_login_clock2_date').innerHTML = OB.I18N.formatDate(d);
+      }
+
+      var ajaxRequest = new enyo.Ajax({
+        url: '../../org.openbravo.retail.posterminal.service.loginutils',
+        cacheBust: false,
+        method: 'GET',
+        handleAs: 'json',
+        contentType: 'application/json;charset=utf-8',
+        data: {
+          command: 'preRenderActions',
+          terminalName: OB.POS.paramTerminal
+        },
+        success: function (inSender, inResponse) {
+          OB.I18N.labels = inResponse.response[0].data[1];
+          OB.Format = inResponse.response[0].data[2];
+          window.localStorage.setItem('I18NLabels', JSON.stringify(OB.I18N.labels));
+          window.localStorage.setItem('WebPOSFormat', JSON.stringify(OB.Format));
+
+          if ((inResponse.response[0].data[0].strClient) !== 'none') {
+            renderPOS();  
+            new OB.DS.Request('org.openbravo.retail.posterminal.term.Context').exec({terminal: OB.POS.paramTerminal}, function (inResponse) {
+              if (inResponse && !inResponse.exception) {
+                OB.POS.modelterminal.user = inResponse[0].user.username;
+                OB.POS.modelterminal.set('orgUserId',inResponse[0].user.id);
+                OB.UTIL.showLoading(true);
+                OB.POS.navigate('main');
+              } else {
+                OB.POS.navigate('login');
+              }
+            }, function () {
+              OB.POS.navigate('login');
+            });
+          } else {
+            showUnknowTerminalError();
+            return true;
+          }
+          OB.UTIL.showLoading(false);
+        },
+        fail: function (inSender, inResponse) {
+          // we are likely offline. Attempt to navigate to the login page
+          OB.I18N.labels = JSON.parse(window.localStorage.getItem('I18NLabels'));
+          OB.Format = JSON.parse(window.localStorage.getItem('WebPOSFormat'));
+          OB.UTIL.showLoading(false);
+          renderPOS();
+          OB.POS.navigate('login');
+        }
+      });
+      ajaxRequest.go(ajaxRequest.data).response('success').error('fail');
+      //} else {
+      //  OB.UTIL.showLoading(false);
+      //  OB.POS.navigate('login');
+      //}
+    }());
+  </script>
+  <div id="terminal" class="pos-container">
+    <div class="section" id="terminal_topsection">
+      <div style="height: 50px; vertical-align: middle;" class="row" id="terminal_control">
+        <div style="padding: 10px 0px 0px 0px; color: white; font-size: 16px;" class="span12" id="terminal_control2">
+          <div style="display: inline-block; vertical-align: middle; margin: 3px 0px 0px 0px;" id="terminal_onlineContainer">
+            <div style="display: inline-block; margin-left: 15px;" id="terminal_onlineviewer"></div>
+            <div style="display: inline-block; margin-left: 50px;" id="terminal_terminal"></div>
+            <div style="display: inline-block; margin-left: 50px;" class="onyx-popup-decorator onyx-popup-decorator enyo-unselectable" id="terminal_menuDecorator"></div>
+            <div style="display: inline-block; margin-left: 50px;" class="onyx-popup-decorator onyx-popup-decorator enyo-unselectable" id="terminal_menuDecorator2"></div>
+          </div>
+          <div style="display: inline-block; float: right;" id="terminal_control3">
+            <div style="display: inline-block; float: left; margin: 4px 10px 0px 0px;" id="terminal_control4">Openbravo Web POS</div>
+            <div style="width: 30px; height: 30px; float: right; margin: 0px 12px 0px 0px;" id="terminal_control5">
+              <div class="top-right-logo" id="terminal_control6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="terminal_control7">
+        <div id="terminal_containerWindow">
+          <section style="" id="terminal_containerWindow_login">
+            <div class="login-header-row" id="terminal_containerWindow_login_control">
+              <div class="login-header-ob" id="terminal_containerWindow_login_control2"></div>
+            </div>
+            <div id="terminal_containerWindow_login_control3">
+              <div class="span6" id="terminal_containerWindow_login_control4">
+                <div class="login-user-container" id="terminal_containerWindow_login_loginUserContainer">.</div>
+              </div>
+              <div class="span6" id="terminal_containerWindow_login_control5" style="display:none;">
+                <div class="login-inputs-container" id="terminal_containerWindow_login_control6">
+                  <div style="display: none" id="terminal_containerWindow_login_loginUnknowTerminal">
+                    <div id="terminal_containerWindow_login_control16">
+                      <div class="login-browsernotsupported-title" id="terminal_containerWindow_login_loginUnknowTerminal_Title_Lbl"></div>
+                    </div>
+                    <div id="terminal_containerWindow_login_control17">
+                      <div class="span8" id="terminal_containerWindow_login_control18">
+                        <div class="login-browsernotsupported-content" id="terminal_containerWindow_login_loginUnknowTerminal_P1_Lbl"></div>
+                      </div>
+                      <div style="padding: 78px 0px 0px 0px" class="span4" id="terminal_containerWindow_login_control19">
+                        <div class="login-clock" id="terminal_containerWindow_login_clock2">
+                          <div class="clock-time" id="terminal_containerWindow_login_clock2_clock"></div>
+                          <div class="clock-date" id="terminal_containerWindow_login_clock2_date"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

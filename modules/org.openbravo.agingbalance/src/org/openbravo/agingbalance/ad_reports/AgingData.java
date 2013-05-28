@@ -1,0 +1,194 @@
+/* 
+ *************************************************************************
+ * The contents of this file are subject to the Openbravo  Public  License
+ * Version  1.1  (the  "License"),  being   the  Mozilla   Public  License
+ * Version 1.1  with a permitted attribution clause; you may not  use this
+ * file except in compliance with the License. You  may  obtain  a copy of
+ * the License at http://www.openbravo.com/legal/license.html 
+ * Software distributed under the License  is  distributed  on  an "AS IS"
+ * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+ * License for the specific  language  governing  rights  and  limitations
+ * under the License. 
+ * The Original Code is Openbravo ERP. 
+ * The Initial Developer of the Original Code is Openbravo SLU 
+ * All portions are Copyright (C) 2012 Openbravo SLU 
+ * All Rights Reserved. 
+ * Contributor(s):  ______________________________________.
+ ************************************************************************
+ **/
+
+package org.openbravo.agingbalance.ad_reports;
+
+import java.math.BigDecimal;
+
+public class AgingData {
+
+  private String bPartnerID;
+  private String bPartner;
+  private BigDecimal current;
+  private BigDecimal amount1;
+  private BigDecimal amount2;
+  private BigDecimal amount3;
+  private BigDecimal amount4;
+  private BigDecimal amount5;
+  private BigDecimal total;
+  private BigDecimal credit;
+  private BigDecimal net;
+
+  public AgingData(String BPartnerID, String BPartner, BigDecimal current, BigDecimal amount1,
+      BigDecimal amount2, BigDecimal amount3, BigDecimal amount4, BigDecimal amount5,
+      BigDecimal credit) {
+    this.bPartnerID = BPartnerID;
+    this.bPartner = BPartner;
+    this.current = current;
+    this.amount1 = amount1;
+    this.amount2 = amount2;
+    this.amount3 = amount3;
+    this.amount4 = amount4;
+    this.amount5 = amount5;
+    this.total = current.add(amount1).add(amount2).add(amount3).add(amount4).add(amount5);
+    this.credit = credit;
+    this.net = current.add(amount1).add(amount2).add(amount3).add(amount4).add(amount5)
+        .subtract(credit);
+  }
+
+  public AgingData(String BPartnerID, String BPartner, BigDecimal amount, int index) {
+    this.bPartnerID = BPartnerID;
+    this.bPartner = BPartner;
+    this.current = BigDecimal.ZERO;
+    this.amount1 = BigDecimal.ZERO;
+    this.amount2 = BigDecimal.ZERO;
+    this.amount3 = BigDecimal.ZERO;
+    this.amount4 = BigDecimal.ZERO;
+    this.amount5 = BigDecimal.ZERO;
+    switch (index) {
+    case 0: {
+      this.current = amount;
+      break;
+    }
+    case 1: {
+      this.amount1 = amount;
+      break;
+    }
+    case 2: {
+      this.amount2 = amount;
+      break;
+    }
+    case 3: {
+      this.amount3 = amount;
+      break;
+    }
+    case 4: {
+      this.amount4 = amount;
+      break;
+    }
+    case 5: {
+      this.amount5 = amount;
+      break;
+    }
+    default: {
+      break;
+    }
+    }
+    this.total = amount;
+    this.credit = BigDecimal.ZERO;
+    this.net = amount;
+  }
+
+  public void setBPartnerID(String BPartnerID) {
+    this.bPartnerID = BPartnerID;
+  }
+
+  public void setBPartner(String BPartner) {
+    this.bPartner = BPartner;
+  }
+
+  public void addAmount(BigDecimal amt, int index) {
+    switch (index) {
+    case 0: {
+      this.current = this.current.add(amt);
+      break;
+    }
+    case 1: {
+      this.amount1 = this.amount1.add(amt);
+      break;
+    }
+    case 2: {
+      this.amount2 = this.amount2.add(amt);
+      break;
+    }
+    case 3: {
+      this.amount3 = this.amount3.add(amt);
+      break;
+    }
+    case 4: {
+      this.amount4 = this.amount4.add(amt);
+      break;
+    }
+    case 5: {
+      this.amount5 = this.amount5.add(amt);
+      break;
+    }
+    default: {
+      break;
+    }
+    }
+    this.total = total.add(amt);
+    this.net = net.add(amt);
+  }
+
+  public void addCredit(BigDecimal credit) {
+    this.credit = this.credit.add(credit);
+    this.net = net.subtract(credit);
+  }
+
+  public String getBPartnerID() {
+    return this.bPartnerID;
+  }
+
+  public String getBPartner() {
+    return this.bPartner;
+  }
+
+  public BigDecimal[] getAmount() {
+    BigDecimal[] auxBigDecimal = { this.current, this.amount1, this.amount2, this.amount3,
+        this.amount4, this.amount5 };
+    return auxBigDecimal;
+  }
+
+  public BigDecimal getcurrent() {
+    return this.current;
+  }
+
+  public BigDecimal getamount1() {
+    return this.amount1;
+  }
+
+  public BigDecimal getamount2() {
+    return this.amount2;
+  }
+
+  public BigDecimal getamount3() {
+    return this.amount3;
+  }
+
+  public BigDecimal getamount4() {
+    return this.amount4;
+  }
+
+  public BigDecimal getamount5() {
+    return this.amount5;
+  }
+
+  public BigDecimal getTotal() {
+    return this.total;
+  }
+
+  public BigDecimal getCredit() {
+    return this.credit;
+  }
+
+  public BigDecimal getNet() {
+    return this.net;
+  }
+}
