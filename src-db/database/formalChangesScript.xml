@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+  <vector>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="473A3AA4C0F143BF900EB108B92618F1">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="608163463C454454A152260DB63FEB9B">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="BBF5C85870774F0C89D1DCF8F7767F76">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="C59D80628EAC461CA227D7ABAD089FA0">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="F1BFAD038AD04F5EB59C1DC9A079A039">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="ISADVANCEDFEATURE" pkRow="FF80808131F60B750131F61B7B38000E">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="FF80808131F60B750131F61B7B38000E">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_PROCESS" columnname="PREVENTCONCURRENT" pkRow="FFB782F2FB024533B5B52818D9FE3E0F">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="M_OFFER_TYPE" columnname="EM_OBPOS_ISCATEGORY" pkRow="5D4BAF6BB86D4D2C9ED3D5A6FC051579">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_MODULE" columnname="ISTRIALALLOWED" pkRow="334C2A06294447FAA7D1AF5D98E8F857">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_MODULE" columnname="ISTRIALALLOWED" pkRow="DA103652AA5B4C60A126A76A87DD77DD">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_MODULE" columnname="ISTRIALALLOWED" pkRow="FF80808131D1689F0131D170F19A0006">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_MODULE_DEPENDENCY" columnname="DEPENDENCY_ENFORCEMENT" pkRow="4942C8DE82064B6DA469E09C2686E161">
+      <oldValue/>
+      <newValue><![CDATA[MAJOR]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_MODULE_DEPENDENCY" columnname="USER_EDITABLE_ENFORCEMENT" pkRow="4942C8DE82064B6DA469E09C2686E161">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="AD_FORM" columnname="ISADVANCEDFEATURE" pkRow="CD9FABFF742847A3BD76EB12F9E5ED1E">
+      <oldValue/>
+      <newValue><![CDATA[N]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="15D5054951C64E519D2D19EB8C3C40AE">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="21B7021F131A4C1F907319981CE1AE88">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="2D3930A72F404E50B78B959E350BB997">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="7C06229C45044E3282B53A624B317AE3">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="8020F940DFEC41629CA7534EF08F880D">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="A1111F20165D4C9E925AF4DDF4F42900">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="C43F89CE54D940A0B5FF742340A8CD5A">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+    <columnDataChange tablename="OBCQL_WIDGET_QUERY" columnname="TYPE" pkRow="CB5DF45E92CF4A46BCFA78C175021605">
+      <oldValue/>
+      <newValue><![CDATA[HQL]]></newValue>
+    </columnDataChange>
+  </vector>
