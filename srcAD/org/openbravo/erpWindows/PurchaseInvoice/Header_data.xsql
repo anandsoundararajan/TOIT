@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SqlClass id="class" name="HeaderData" package="org.openbravo.erpWindows.PurchaseInvoice">
+  <SqlClassComment>WAD Generated class</SqlClassComment>
+
+  <SqlMethod name="selectEdit" type="preparedStatement" return="multiple">
+    <SqlMethodComment>Select for edit</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT to_char(C_Invoice.Created, ?) as created, 
+        (SELECT NAME FROM AD_USER u WHERE AD_USER_ID = C_Invoice.CreatedBy) as CreatedByR, 
+        to_char(C_Invoice.Updated, ?) as updated, 
+        to_char(C_Invoice.Updated, 'YYYYMMDDHH24MISS') as Updated_Time_Stamp,  
+        C_Invoice.UpdatedBy, 
+        (SELECT NAME FROM AD_USER u WHERE AD_USER_ID = C_Invoice.UpdatedBy) as UpdatedByR,
+        C_Invoice.AD_Org_ID, 
+(CASE WHEN C_Invoice.AD_Org_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table1.Name), ''))),'') ) END) AS AD_Org_IDR, 
+C_Invoice.C_DocTypeTarget_ID, 
+(CASE WHEN C_Invoice.C_DocTypeTarget_ID IS NULL THEN '' ELSE  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR((CASE WHEN tableTRL2.Name IS NULL THEN TO_CHAR(table2.Name) ELSE TO_CHAR(tableTRL2.Name) END)), ''))),'') ) END) AS C_DocTypeTarget_IDR, 
+C_Invoice.DocumentNo, 
+C_Invoice.DateInvoiced, 
+C_Invoice.C_BPartner_ID, 
+(CASE WHEN C_Invoice.C_BPartner_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table3.Name), ''))),'') ) END) AS C_BPartner_IDR, 
+C_Invoice.C_BPartner_Location_ID, 
+(CASE WHEN C_Invoice.C_BPartner_Location_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table4.Name), ''))),'') ) END) AS C_BPartner_Location_IDR, 
+C_Invoice.M_PriceList_ID, 
+(CASE WHEN C_Invoice.M_PriceList_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table5.Name), ''))),'') ) END) AS M_PriceList_IDR, 
+C_Invoice.DateAcct, 
+C_Invoice.C_PaymentTerm_ID, 
+(CASE WHEN C_Invoice.C_PaymentTerm_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR((CASE WHEN tableTRL6.Name IS NULL THEN TO_CHAR(table6.Name) ELSE TO_CHAR(tableTRL6.Name) END)), ''))),'') ) END) AS C_PaymentTerm_IDR, 
+C_Invoice.FIN_Paymentmethod_ID, 
+(CASE WHEN C_Invoice.FIN_Paymentmethod_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table7.Name), ''))),'') ) END) AS FIN_Paymentmethod_IDR, 
+C_Invoice.Description, 
+C_Invoice.C_Order_ID, 
+(CASE WHEN C_Invoice.C_Order_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table8.DocumentNo), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(table8.DateOrdered, 'DD-MM-YYYY')),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table8.GrandTotal), ''))),'') ) END) AS C_Order_IDR, 
+C_Invoice.POReference, 
+C_Invoice.DocStatus, 
+C_Invoice.GrandTotal, 
+C_Invoice.TotalLines, 
+C_Invoice.C_Currency_ID, 
+COALESCE(C_Invoice.Ispaid, 'N') AS Ispaid, 
+C_Invoice.AD_User_ID, 
+C_Invoice.Totalpaid, 
+C_Invoice.LastCalculatedOnDate, 
+C_Invoice.OutstandingAmt, 
+C_Invoice.Taxdate, 
+C_Invoice.DueAmt, 
+C_Invoice.DateOrdered, 
+C_Invoice.DaysTillDue, 
+C_Invoice.SalesRep_ID, 
+COALESCE(C_Invoice.IsDiscountPrinted, 'N') AS IsDiscountPrinted, 
+C_Invoice.C_DocType_ID, 
+C_Invoice.Withholdingamount, 
+C_Invoice.C_Withholding_ID, 
+C_Invoice.Percentageoverdue, 
+C_Invoice.C_Activity_ID, 
+C_Invoice.Finalsettlement, 
+C_Invoice.C_Campaign_ID, 
+C_Invoice.Daysoutstanding, 
+COALESCE(C_Invoice.IsActive, 'N') AS IsActive, 
+C_Invoice.ChargeAmt, 
+C_Invoice.C_Charge_ID, 
+C_Invoice.GenerateTo, 
+C_Invoice.AD_OrgTrx_ID, 
+C_Invoice.UpdatePaymentMonitor, 
+C_Invoice.EM_APRM_Addpayment, 
+C_Invoice.Posted, 
+list1.name as Posted_BTN, 
+C_Invoice.EM_APRM_Processinvoice, 
+list2.name as EM_APRM_Processinvoice_BTN, 
+C_Invoice.DocAction, 
+list3.name as DocAction_BTN, 
+C_Invoice.CreateFrom, 
+C_Invoice.CopyFrom, 
+C_Invoice.Calculate_Promotions, 
+C_Invoice.C_Project_ID, 
+(CASE WHEN C_Invoice.C_Project_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table9.Value), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table9.Name), ''))),'') ) END) AS C_Project_IDR, 
+C_Invoice.C_Costcenter_ID, 
+C_Invoice.A_Asset_ID, 
+C_Invoice.User1_ID, 
+C_Invoice.User2_ID, 
+COALESCE(C_Invoice.IsPrinted, 'N') AS IsPrinted, 
+C_Invoice.PaymentRule, 
+COALESCE(C_Invoice.IsSOTrx, 'N') AS IsSOTrx, 
+C_Invoice.DatePrinted, 
+C_Invoice.Processing, 
+COALESCE(C_Invoice.Processed, 'N') AS Processed, 
+C_Invoice.C_Invoice_ID, 
+C_Invoice.AD_Client_ID, 
+COALESCE(C_Invoice.IsSelfService, 'N') AS IsSelfService, 
+COALESCE(C_Invoice.IsTaxIncluded, 'N') AS IsTaxIncluded, 
+ 
+        ? AS LANGUAGE 
+        FROM C_Invoice left join (select AD_Org_ID, Name from AD_Org) table1 on (C_Invoice.AD_Org_ID = table1.AD_Org_ID) left join (select C_DocType_ID, Name from C_DocType) table2 on (C_Invoice.C_DocTypeTarget_ID =  table2.C_DocType_ID) left join (select C_DocType_ID,AD_Language, Name from C_DocType_TRL) tableTRL2 on (table2.C_DocType_ID = tableTRL2.C_DocType_ID and tableTRL2.AD_Language = ?)  left join (select C_BPartner_ID, Name from C_BPartner) table3 on (C_Invoice.C_BPartner_ID = table3.C_BPartner_ID) left join (select C_BPartner_Location_ID, Name from C_BPartner_Location) table4 on (C_Invoice.C_BPartner_Location_ID = table4.C_BPartner_Location_ID) left join (select M_PriceList_ID, Name from M_PriceList) table5 on (C_Invoice.M_PriceList_ID = table5.M_PriceList_ID) left join (select C_PaymentTerm_ID, Name from C_PaymentTerm) table6 on (C_Invoice.C_PaymentTerm_ID = table6.C_PaymentTerm_ID) left join (select C_PaymentTerm_ID,AD_Language, Name from C_PaymentTerm_TRL) tableTRL6 on (table6.C_PaymentTerm_ID = tableTRL6.C_PaymentTerm_ID and tableTRL6.AD_Language = ?)  left join (select FIN_Paymentmethod_ID, Name from FIN_Paymentmethod) table7 on (C_Invoice.FIN_Paymentmethod_ID = table7.FIN_Paymentmethod_ID) left join (select C_Order_ID, DocumentNo, DateOrdered, GrandTotal from C_Order) table8 on (C_Invoice.C_Order_ID = table8.C_Order_ID) left join ad_ref_list_v list1 on (list1.ad_reference_id = '234' and list1.ad_language = ?  AND C_Invoice.Posted = TO_CHAR(list1.value)) left join ad_ref_list_v list2 on (list2.ad_reference_id = '135' and list2.ad_language = ?  AND C_Invoice.EM_APRM_Processinvoice = TO_CHAR(list2.value)) left join ad_ref_list_v list3 on (list3.ad_reference_id = '135' and list3.ad_language = ?  AND (CASE C_Invoice.DocAction WHEN '--' THEN 'CL' ELSE TO_CHAR(C_Invoice.DocAction) END) = list3.value) left join (select C_Project_ID, Value, Name from C_Project) table9 on (C_Invoice.C_Project_ID = table9.C_Project_ID)
+        WHERE 2=2 
+ AND C_Invoice.IsSOTrx='N'
+        AND 1=1 
+        AND C_Invoice.C_Invoice_ID = ? 
+        AND C_Invoice.AD_Client_ID IN ('1') 
+           AND C_Invoice.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="dateTimeFormat"></Parameter>
+    <Parameter name="dateTimeFormat"></Parameter>
+    
+    <Parameter name="paramLanguage"></Parameter>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+
+
+    <Parameter name="key"></Parameter>
+        <Parameter name="adUserClient" type="replace" optional="true" after="C_Invoice.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="C_Invoice.AD_Org_ID IN (" text="'1'"/>
+
+    <Field name="adUserClient" value="void"></Field>
+    <Field name="adOrgClient" value="void"></Field>
+    <Field name="createdby" value="void"></Field>
+    
+    <Field name="trBgcolor" value="void"></Field>
+    <Field name="totalCount" value="void"></Field>
+    <Field name="dateTimeFormat" value=""></Field>
+  </SqlMethod>
+  
+  
+
+  <SqlMethod name="set" type="constant" return="multiple">
+      <SqlMethodComment>Create a registry</SqlMethodComment>
+      <Sql></Sql>
+
+<Parameter name="lastcalculatedondate"></Parameter><Parameter name="cWithholdingId"></Parameter><Parameter name="withholdingamount"></Parameter><Parameter name="taxdate"></Parameter><Parameter name="daystilldue"></Parameter><Parameter name="cInvoiceId"></Parameter><Parameter name="adClientId"></Parameter><Parameter name="adOrgId"></Parameter><Parameter name="isactive"></Parameter><Parameter name="created"></Parameter><Parameter name="createdby"></Parameter><Parameter name="createdbyr"></Parameter><Parameter name="updatedby"></Parameter><Parameter name="updatedbyr"></Parameter><Parameter name="documentno"></Parameter><Parameter name="cDoctypeId"></Parameter><Parameter name="docstatus"></Parameter><Parameter name="docaction"></Parameter><Parameter name="docactionBtn"></Parameter><Parameter name="processing"></Parameter><Parameter name="processed"></Parameter><Parameter name="cBpartnerId"></Parameter><Parameter name="cBpartnerIdr"></Parameter><Parameter name="cPaymenttermId"></Parameter><Parameter name="cBpartnerLocationId"></Parameter><Parameter name="cCurrencyId"></Parameter><Parameter name="totallines"></Parameter><Parameter name="grandtotal"></Parameter><Parameter name="dateacct"></Parameter><Parameter name="cCampaignId"></Parameter><Parameter name="cProjectId"></Parameter><Parameter name="cProjectIdr"></Parameter><Parameter name="cActivityId"></Parameter><Parameter name="salesrepId"></Parameter><Parameter name="adUserId"></Parameter><Parameter name="issotrx"></Parameter><Parameter name="cDoctypetargetId"></Parameter><Parameter name="description"></Parameter><Parameter name="dateinvoiced"></Parameter><Parameter name="dateprinted"></Parameter><Parameter name="poreference"></Parameter><Parameter name="cChargeId"></Parameter><Parameter name="chargeamt"></Parameter><Parameter name="mPricelistId"></Parameter><Parameter name="paymentrule"></Parameter><Parameter name="cOrderId"></Parameter><Parameter name="cOrderIdr"></Parameter><Parameter name="dateordered"></Parameter><Parameter name="isdiscountprinted"></Parameter><Parameter name="isprinted"></Parameter><Parameter name="istaxincluded"></Parameter><Parameter name="posted"></Parameter><Parameter name="postedBtn"></Parameter><Parameter name="generateto"></Parameter><Parameter name="createfrom"></Parameter><Parameter name="emAprmAddpayment"></Parameter><Parameter name="finPaymentmethodId"></Parameter><Parameter name="copyfrom"></Parameter><Parameter name="isselfservice"></Parameter><Parameter name="emAprmProcessinvoice"></Parameter><Parameter name="emAprmProcessinvoiceBtn"></Parameter><Parameter name="cCostcenterId"></Parameter><Parameter name="adOrgtrxId"></Parameter><Parameter name="user1Id"></Parameter><Parameter name="user2Id"></Parameter><Parameter name="finalsettlement"></Parameter><Parameter name="daysoutstanding"></Parameter><Parameter name="percentageoverdue"></Parameter><Parameter name="totalpaid"></Parameter><Parameter name="outstandingamt"></Parameter><Parameter name="dueamt"></Parameter><Parameter name="ispaid"></Parameter><Parameter name="updatepaymentmonitor"></Parameter><Parameter name="aAssetId"></Parameter><Parameter name="calculatePromotions"></Parameter>
+   </SqlMethod>
+
+
+   <SqlMethod name="selectAux68CD2AFDCEAB45ADB0690B33067B7940" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        select max(docbasetype) from c_doctype where c_doctype_id = ? 
+    ]]></Sql>
+
+<Parameter name="c_doctypetarget_id"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectAux7E3FB488115E46C5937FDF8A73D36098" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT COUNT(*) FROM C_INVOICE_REVERSE WHERE C_INVOICE_ID=? 
+    ]]></Sql>
+
+<Parameter name="C_INVOICE_ID"/>
+  </SqlMethod>
+
+
+
+
+
+   <SqlMethod name="selectDef3489_0" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as CreatedBy FROM AD_User left join (select AD_User_ID, Name from AD_User) table2 on (AD_User.AD_User_ID = table2.AD_User_ID) WHERE AD_User.isActive='Y' AND AD_User.AD_User_ID = ?  
+    ]]></Sql>
+<Parameter name="CreatedByR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDef3491_1" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as UpdatedBy FROM AD_User left join (select AD_User_ID, Name from AD_User) table2 on (AD_User.AD_User_ID = table2.AD_User_ID) WHERE AD_User.isActive='Y' AND AD_User.AD_User_ID = ?  
+    ]]></Sql>
+<Parameter name="UpdatedByR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDef3499_2" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as C_BPartner_ID FROM C_BPartner left join (select C_BPartner_ID, Name from C_BPartner) table2 on (C_BPartner.C_BPartner_ID = table2.C_BPartner_ID) WHERE C_BPartner.isActive='Y' AND C_BPartner.C_BPartner_ID = ?  
+    ]]></Sql>
+<Parameter name="C_BPartner_IDR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDef3510_3" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Value), ''))), '')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as C_Project_ID FROM C_Project left join (select C_Project_ID, Value, Name from C_Project) table2 on (C_Project.C_Project_ID = table2.C_Project_ID) WHERE C_Project.isActive='Y' AND C_Project.C_Project_ID = ?  
+    ]]></Sql>
+<Parameter name="C_Project_IDR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDef4247_4" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.DocumentNo), ''))), '')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(table2.DateOrdered, 'DD-MM-YYYY')), '')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.GrandTotal), ''))), '') ) as C_Order_ID FROM C_Order left join (select C_Order_ID, DocumentNo, DateOrdered, GrandTotal from C_Order) table2 on (C_Order.C_Order_ID = table2.C_Order_ID) WHERE C_Order.isActive='Y' AND C_Order.C_Order_ID = ?  
+    ]]></Sql>
+<Parameter name="C_Order_IDR"/>
+  </SqlMethod>
+
+
+
+
+
+  <SqlMethod name="updateDocAction" type="preparedStatement" return="rowCount">
+    <Sql><![CDATA[
+        UPDATE C_Invoice
+        SET docaction = ? 
+        WHERE C_Invoice.C_Invoice_ID = ?
+    ]]></Sql>
+    <Parameter name="docaction"></Parameter>
+    <Parameter id="paramKey" name="cInvoiceId"></Parameter>
+  </SqlMethod>
+
+
+
+
+
+   <SqlMethod name="selectActDefM_Locator_ID" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for action search</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT Value FROM M_Locator WHERE isActive='Y' AND M_Locator_ID = ?  
+    ]]></Sql>
+    <Parameter name="M_Locator_ID"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectActDefC_Invoice_ID" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for action search</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT DocumentNo FROM C_Invoice WHERE isActive='Y' AND C_Invoice_ID = ?  
+    ]]></Sql>
+    <Parameter name="C_Invoice_ID"/>
+  </SqlMethod>
+
+
+  <SqlMethod name="update" type="preparedStatement" return="rowCount" static="false" connection="true">
+    <Sql><![CDATA[
+        UPDATE C_Invoice
+        SET AD_Org_ID = (?) , C_DocTypeTarget_ID = (?) , DocumentNo = (?) , DateInvoiced = TO_DATE(?) , C_BPartner_ID = (?) , C_BPartner_Location_ID = (?) , M_PriceList_ID = (?) , DateAcct = TO_DATE(?) , C_PaymentTerm_ID = (?) , FIN_Paymentmethod_ID = (?) , Description = (?) , C_Order_ID = (?) , POReference = (?) , DocStatus = (?) , GrandTotal = TO_NUMBER(?) , TotalLines = TO_NUMBER(?) , C_Currency_ID = (?) , Ispaid = (?) , AD_User_ID = (?) , Totalpaid = TO_NUMBER(?) , LastCalculatedOnDate = TO_DATE(?) , OutstandingAmt = TO_NUMBER(?) , Taxdate = TO_DATE(?) , DateOrdered = TO_DATE(?) , DueAmt = TO_NUMBER(?) , SalesRep_ID = (?) , DaysTillDue = TO_NUMBER(?) , IsDiscountPrinted = (?) , C_DocType_ID = (?) , Withholdingamount = TO_NUMBER(?) , C_Withholding_ID = (?) , C_Activity_ID = (?) , Percentageoverdue = TO_NUMBER(?) , Finalsettlement = TO_DATE(?) , C_Campaign_ID = (?) , Daysoutstanding = TO_NUMBER(?) , IsActive = (?) , ChargeAmt = TO_NUMBER(?) , C_Charge_ID = (?) , GenerateTo = (?) , AD_OrgTrx_ID = (?) , UpdatePaymentMonitor = (?) , EM_APRM_Addpayment = (?) , Posted = (?) , EM_APRM_Processinvoice = (?) , DocAction = (?) , CreateFrom = (?) , CopyFrom = (?) , Calculate_Promotions = (?) , C_Project_ID = (?) , C_Costcenter_ID = (?) , A_Asset_ID = (?) , User1_ID = (?) , User2_ID = (?) , IsPrinted = (?) , PaymentRule = (?) , IsSOTrx = (?) , DatePrinted = TO_DATE(?) , Processing = (?) , Processed = (?) , C_Invoice_ID = (?) , AD_Client_ID = (?) , IsSelfService = (?) , IsTaxIncluded = (?) , updated = now(), updatedby = ? 
+        WHERE C_Invoice.C_Invoice_ID = ? 
+        
+        AND C_Invoice.AD_Client_ID IN ('1') 
+        AND C_Invoice.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="adOrgId"></Parameter> <Parameter name="cDoctypetargetId"></Parameter> <Parameter name="documentno"></Parameter> <Parameter name="dateinvoiced"></Parameter> <Parameter name="cBpartnerId"></Parameter> <Parameter name="cBpartnerLocationId"></Parameter> <Parameter name="mPricelistId"></Parameter> <Parameter name="dateacct"></Parameter> <Parameter name="cPaymenttermId"></Parameter> <Parameter name="finPaymentmethodId"></Parameter> <Parameter name="description"></Parameter> <Parameter name="cOrderId"></Parameter> <Parameter name="poreference"></Parameter> <Parameter name="docstatus"></Parameter> <Parameter name="grandtotal"></Parameter> <Parameter name="totallines"></Parameter> <Parameter name="cCurrencyId"></Parameter> <Parameter name="ispaid"></Parameter> <Parameter name="adUserId"></Parameter> <Parameter name="totalpaid"></Parameter> <Parameter name="lastcalculatedondate"></Parameter> <Parameter name="outstandingamt"></Parameter> <Parameter name="taxdate"></Parameter> <Parameter name="dateordered"></Parameter> <Parameter name="dueamt"></Parameter> <Parameter name="salesrepId"></Parameter> <Parameter name="daystilldue"></Parameter> <Parameter name="isdiscountprinted"></Parameter> <Parameter name="cDoctypeId"></Parameter> <Parameter name="withholdingamount"></Parameter> <Parameter name="cWithholdingId"></Parameter> <Parameter name="cActivityId"></Parameter> <Parameter name="percentageoverdue"></Parameter> <Parameter name="finalsettlement"></Parameter> <Parameter name="cCampaignId"></Parameter> <Parameter name="daysoutstanding"></Parameter> <Parameter name="isactive"></Parameter> <Parameter name="chargeamt"></Parameter> <Parameter name="cChargeId"></Parameter> <Parameter name="generateto"></Parameter> <Parameter name="adOrgtrxId"></Parameter> <Parameter name="updatepaymentmonitor"></Parameter> <Parameter name="emAprmAddpayment"></Parameter> <Parameter name="posted"></Parameter> <Parameter name="emAprmProcessinvoice"></Parameter> <Parameter name="docaction"></Parameter> <Parameter name="createfrom"></Parameter> <Parameter name="copyfrom"></Parameter> <Parameter name="calculatePromotions"></Parameter> <Parameter name="cProjectId"></Parameter> <Parameter name="cCostcenterId"></Parameter> <Parameter name="aAssetId"></Parameter> <Parameter name="user1Id"></Parameter> <Parameter name="user2Id"></Parameter> <Parameter name="isprinted"></Parameter> <Parameter name="paymentrule"></Parameter> <Parameter name="issotrx"></Parameter> <Parameter name="dateprinted"></Parameter> <Parameter name="processing"></Parameter> <Parameter name="processed"></Parameter> <Parameter name="cInvoiceId"></Parameter> <Parameter name="adClientId"></Parameter> <Parameter name="isselfservice"></Parameter> <Parameter name="istaxincluded"></Parameter> 
+    <Parameter name="updatedby"></Parameter>
+    <Parameter id="paramKey" name="cInvoiceId"></Parameter>
+    
+    
+        <Parameter name="adUserClient" type="replace" optional="true" after="C_Invoice.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="C_Invoice.AD_Org_ID IN (" text="'1'"/>
+  </SqlMethod>
+
+  <SqlMethod name="insert" type="preparedStatement" return="rowCount" static="false" connection="true">
+    <Sql><![CDATA[
+        INSERT INTO C_Invoice 
+        (AD_Org_ID, C_DocTypeTarget_ID, DocumentNo, DateInvoiced, C_BPartner_ID, C_BPartner_Location_ID, M_PriceList_ID, DateAcct, C_PaymentTerm_ID, FIN_Paymentmethod_ID, Description, C_Order_ID, POReference, DocStatus, GrandTotal, TotalLines, C_Currency_ID, Ispaid, AD_User_ID, Totalpaid, LastCalculatedOnDate, OutstandingAmt, Taxdate, DueAmt, DateOrdered, DaysTillDue, SalesRep_ID, IsDiscountPrinted, C_DocType_ID, Withholdingamount, C_Withholding_ID, Percentageoverdue, C_Activity_ID, Finalsettlement, C_Campaign_ID, Daysoutstanding, IsActive, ChargeAmt, C_Charge_ID, GenerateTo, AD_OrgTrx_ID, UpdatePaymentMonitor, EM_APRM_Addpayment, Posted, EM_APRM_Processinvoice, DocAction, CreateFrom, CopyFrom, Calculate_Promotions, C_Project_ID, C_Costcenter_ID, A_Asset_ID, User1_ID, User2_ID, IsPrinted, PaymentRule, IsSOTrx, DatePrinted, Processing, Processed, C_Invoice_ID, AD_Client_ID, IsSelfService, IsTaxIncluded, created, createdby, updated, updatedBy)
+        VALUES ((?), (?), (?), TO_DATE(?), (?), (?), (?), TO_DATE(?), (?), (?), (?), (?), (?), (?), TO_NUMBER(?), TO_NUMBER(?), (?), (?), (?), TO_NUMBER(?), TO_DATE(?), TO_NUMBER(?), TO_DATE(?), TO_NUMBER(?), TO_DATE(?), TO_NUMBER(?), (?), (?), (?), TO_NUMBER(?), (?), TO_NUMBER(?), (?), TO_DATE(?), (?), TO_NUMBER(?), (?), TO_NUMBER(?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), TO_DATE(?), (?), (?), (?), (?), (?), (?), now(), ?, now(), ?)
+    ]]></Sql>
+    <Parameter name="adOrgId"></Parameter> <Parameter name="cDoctypetargetId"></Parameter> <Parameter name="documentno"></Parameter> <Parameter name="dateinvoiced"></Parameter> <Parameter name="cBpartnerId"></Parameter> <Parameter name="cBpartnerLocationId"></Parameter> <Parameter name="mPricelistId"></Parameter> <Parameter name="dateacct"></Parameter> <Parameter name="cPaymenttermId"></Parameter> <Parameter name="finPaymentmethodId"></Parameter> <Parameter name="description"></Parameter> <Parameter name="cOrderId"></Parameter> <Parameter name="poreference"></Parameter> <Parameter name="docstatus"></Parameter> <Parameter name="grandtotal"></Parameter> <Parameter name="totallines"></Parameter> <Parameter name="cCurrencyId"></Parameter> <Parameter name="ispaid"></Parameter> <Parameter name="adUserId"></Parameter> <Parameter name="totalpaid"></Parameter> <Parameter name="lastcalculatedondate"></Parameter> <Parameter name="outstandingamt"></Parameter> <Parameter name="taxdate"></Parameter> <Parameter name="dueamt"></Parameter> <Parameter name="dateordered"></Parameter> <Parameter name="daystilldue"></Parameter> <Parameter name="salesrepId"></Parameter> <Parameter name="isdiscountprinted"></Parameter> <Parameter name="cDoctypeId"></Parameter> <Parameter name="withholdingamount"></Parameter> <Parameter name="cWithholdingId"></Parameter> <Parameter name="percentageoverdue"></Parameter> <Parameter name="cActivityId"></Parameter> <Parameter name="finalsettlement"></Parameter> <Parameter name="cCampaignId"></Parameter> <Parameter name="daysoutstanding"></Parameter> <Parameter name="isactive"></Parameter> <Parameter name="chargeamt"></Parameter> <Parameter name="cChargeId"></Parameter> <Parameter name="generateto"></Parameter> <Parameter name="adOrgtrxId"></Parameter> <Parameter name="updatepaymentmonitor"></Parameter> <Parameter name="emAprmAddpayment"></Parameter> <Parameter name="posted"></Parameter> <Parameter name="emAprmProcessinvoice"></Parameter> <Parameter name="docaction"></Parameter> <Parameter name="createfrom"></Parameter> <Parameter name="copyfrom"></Parameter> <Parameter name="calculatePromotions"></Parameter> <Parameter name="cProjectId"></Parameter> <Parameter name="cCostcenterId"></Parameter> <Parameter name="aAssetId"></Parameter> <Parameter name="user1Id"></Parameter> <Parameter name="user2Id"></Parameter> <Parameter name="isprinted"></Parameter> <Parameter name="paymentrule"></Parameter> <Parameter name="issotrx"></Parameter> <Parameter name="dateprinted"></Parameter> <Parameter name="processing"></Parameter> <Parameter name="processed"></Parameter> <Parameter name="cInvoiceId"></Parameter> <Parameter name="adClientId"></Parameter> <Parameter name="isselfservice"></Parameter> <Parameter name="istaxincluded"></Parameter> 
+    <Parameter name="createdby"></Parameter>
+    <Parameter name="updatedby"></Parameter>
+  </SqlMethod>
+
+  <SqlMethod name="delete" type="preparedStatement" return="rowCount">
+    <Sql><![CDATA[
+        DELETE FROM C_Invoice
+        WHERE C_Invoice.C_Invoice_ID = ? 
+        
+        AND C_Invoice.AD_Client_ID IN ('1') 
+        AND C_Invoice.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="param1"></Parameter>
+    
+        <Parameter name="adUserClient" type="replace" optional="true" after="C_Invoice.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="C_Invoice.AD_Org_ID IN (" text="'1'"/>
+  </SqlMethod>
+
+  <SqlMethod name="selectOrg" type="preparedStatement" return="string">
+    <SqlMethodComment>Select for relation</SqlMethodComment>
+    <Sql><![CDATA[ 
+        SELECT AD_ORG_ID
+          FROM C_Invoice
+         WHERE C_Invoice.C_Invoice_ID = ? 
+    ]]></Sql>
+    <Parameter name="id"></Parameter>
+  </SqlMethod>
+  
+  <SqlMethod name="getCurrentDBTimestamp" type="preparedStatement" return="string">
+    <Sql><![CDATA[ 
+        SELECT to_char(Updated, 'YYYYMMDDHH24MISS') as Updated_Time_Stamp
+          FROM C_Invoice
+         WHERE C_Invoice.C_Invoice_ID = ? 
+    ]]></Sql>
+    <Parameter name="id"></Parameter>
+  </SqlMethod>
+</SqlClass>

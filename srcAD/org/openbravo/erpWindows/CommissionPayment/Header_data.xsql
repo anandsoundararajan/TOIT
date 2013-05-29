@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SqlClass id="class" name="HeaderData" package="org.openbravo.erpWindows.CommissionPayment">
+  <SqlClassComment>WAD Generated class</SqlClassComment>
+
+  <SqlMethod name="selectEdit" type="preparedStatement" return="multiple">
+    <SqlMethodComment>Select for edit</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT to_char(C_CommissionRun.Created, ?) as created, 
+        (SELECT NAME FROM AD_USER u WHERE AD_USER_ID = C_CommissionRun.CreatedBy) as CreatedByR, 
+        to_char(C_CommissionRun.Updated, ?) as updated, 
+        to_char(C_CommissionRun.Updated, 'YYYYMMDDHH24MISS') as Updated_Time_Stamp,  
+        C_CommissionRun.UpdatedBy, 
+        (SELECT NAME FROM AD_USER u WHERE AD_USER_ID = C_CommissionRun.UpdatedBy) as UpdatedByR,
+        C_CommissionRun.AD_Org_ID, 
+(CASE WHEN C_CommissionRun.AD_Org_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table1.Name), ''))),'') ) END) AS AD_Org_IDR, 
+C_CommissionRun.C_Commission_ID, 
+(CASE WHEN C_CommissionRun.C_Commission_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))),'') ) END) AS C_Commission_IDR, 
+C_CommissionRun.DocumentNo, 
+C_CommissionRun.Description, 
+C_CommissionRun.StartDate, 
+C_CommissionRun.GrandTotal, 
+C_CommissionRun.Processing, 
+C_CommissionRun.C_Invoice_ID, 
+(CASE WHEN C_CommissionRun.C_Invoice_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table3.DocumentNo), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(table3.DateInvoiced, 'DD-MM-YYYY')),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table3.GrandTotal), ''))),'') ) END) AS C_Invoice_IDR, 
+COALESCE(C_CommissionRun.IsActive, 'N') AS IsActive, 
+COALESCE(C_CommissionRun.Processed, 'N') AS Processed, 
+C_CommissionRun.AD_Client_ID, 
+C_CommissionRun.C_CommissionRun_ID, 
+ 
+        ? AS LANGUAGE 
+        FROM C_CommissionRun left join (select AD_Org_ID, Name from AD_Org) table1 on (C_CommissionRun.AD_Org_ID = table1.AD_Org_ID) left join (select C_Commission_ID, Name from C_Commission) table2 on (C_CommissionRun.C_Commission_ID = table2.C_Commission_ID) left join (select C_Invoice_ID, DocumentNo, DateInvoiced, GrandTotal from C_Invoice) table3 on (C_CommissionRun.C_Invoice_ID = table3.C_Invoice_ID)
+        WHERE 2=2 
+
+        AND 1=1 
+        AND C_CommissionRun.C_CommissionRun_ID = ? 
+        AND C_CommissionRun.AD_Client_ID IN ('1') 
+           AND C_CommissionRun.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="dateTimeFormat"></Parameter>
+    <Parameter name="dateTimeFormat"></Parameter>
+    
+    <Parameter name="paramLanguage"></Parameter>
+
+
+    <Parameter name="key"></Parameter>
+        <Parameter name="adUserClient" type="replace" optional="true" after="C_CommissionRun.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="C_CommissionRun.AD_Org_ID IN (" text="'1'"/>
+
+    <Field name="adUserClient" value="void"></Field>
+    <Field name="adOrgClient" value="void"></Field>
+    <Field name="createdby" value="void"></Field>
+    
+    <Field name="trBgcolor" value="void"></Field>
+    <Field name="totalCount" value="void"></Field>
+    <Field name="dateTimeFormat" value=""></Field>
+  </SqlMethod>
+  
+  
+
+  <SqlMethod name="set" type="constant" return="multiple">
+      <SqlMethodComment>Create a registry</SqlMethodComment>
+      <Sql></Sql>
+
+<Parameter name="cCommissionrunId"></Parameter><Parameter name="adClientId"></Parameter><Parameter name="adOrgId"></Parameter><Parameter name="isactive"></Parameter><Parameter name="createdby"></Parameter><Parameter name="createdbyr"></Parameter><Parameter name="updatedby"></Parameter><Parameter name="updatedbyr"></Parameter><Parameter name="documentno"></Parameter><Parameter name="description"></Parameter><Parameter name="cCommissionId"></Parameter><Parameter name="startdate"></Parameter><Parameter name="processing"></Parameter><Parameter name="processed"></Parameter><Parameter name="grandtotal"></Parameter><Parameter name="cInvoiceId"></Parameter><Parameter name="cInvoiceIdr"></Parameter>
+   </SqlMethod>
+
+
+
+
+
+
+   <SqlMethod name="selectDef5807_0" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as CreatedBy FROM AD_User left join (select AD_User_ID, Name from AD_User) table2 on (AD_User.AD_User_ID = table2.AD_User_ID) WHERE AD_User.isActive='Y' AND AD_User.AD_User_ID = ?  
+    ]]></Sql>
+<Parameter name="CreatedByR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDef5809_1" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as UpdatedBy FROM AD_User left join (select AD_User_ID, Name from AD_User) table2 on (AD_User.AD_User_ID = table2.AD_User_ID) WHERE AD_User.isActive='Y' AND AD_User.AD_User_ID = ?  
+    ]]></Sql>
+<Parameter name="UpdatedByR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDef802830_2" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.DocumentNo), ''))), '')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(table2.DateInvoiced, 'DD-MM-YYYY')), '')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.GrandTotal), ''))), '') ) as C_Invoice_ID FROM C_Invoice left join (select C_Invoice_ID, DocumentNo, DateInvoiced, GrandTotal from C_Invoice) table2 on (C_Invoice.C_Invoice_ID = table2.C_Invoice_ID) WHERE C_Invoice.isActive='Y' AND C_Invoice.C_Invoice_ID = ?  
+    ]]></Sql>
+<Parameter name="C_Invoice_IDR"/>
+  </SqlMethod>
+
+
+
+
+
+
+
+
+
+
+  <SqlMethod name="update" type="preparedStatement" return="rowCount" static="false" connection="true">
+    <Sql><![CDATA[
+        UPDATE C_CommissionRun
+        SET AD_Org_ID = (?) , C_Commission_ID = (?) , DocumentNo = (?) , Description = (?) , StartDate = TO_DATE(?) , GrandTotal = TO_NUMBER(?) , Processing = (?) , C_Invoice_ID = (?) , IsActive = (?) , Processed = (?) , AD_Client_ID = (?) , C_CommissionRun_ID = (?) , updated = now(), updatedby = ? 
+        WHERE C_CommissionRun.C_CommissionRun_ID = ? 
+        
+        AND C_CommissionRun.AD_Client_ID IN ('1') 
+        AND C_CommissionRun.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="adOrgId"></Parameter> <Parameter name="cCommissionId"></Parameter> <Parameter name="documentno"></Parameter> <Parameter name="description"></Parameter> <Parameter name="startdate"></Parameter> <Parameter name="grandtotal"></Parameter> <Parameter name="processing"></Parameter> <Parameter name="cInvoiceId"></Parameter> <Parameter name="isactive"></Parameter> <Parameter name="processed"></Parameter> <Parameter name="adClientId"></Parameter> <Parameter name="cCommissionrunId"></Parameter> 
+    <Parameter name="updatedby"></Parameter>
+    <Parameter id="paramKey" name="cCommissionrunId"></Parameter>
+    
+    
+        <Parameter name="adUserClient" type="replace" optional="true" after="C_CommissionRun.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="C_CommissionRun.AD_Org_ID IN (" text="'1'"/>
+  </SqlMethod>
+
+  <SqlMethod name="insert" type="preparedStatement" return="rowCount" static="false" connection="true">
+    <Sql><![CDATA[
+        INSERT INTO C_CommissionRun 
+        (AD_Org_ID, C_Commission_ID, DocumentNo, Description, StartDate, GrandTotal, Processing, C_Invoice_ID, IsActive, Processed, AD_Client_ID, C_CommissionRun_ID, created, createdby, updated, updatedBy)
+        VALUES ((?), (?), (?), (?), TO_DATE(?), TO_NUMBER(?), (?), (?), (?), (?), (?), (?), now(), ?, now(), ?)
+    ]]></Sql>
+    <Parameter name="adOrgId"></Parameter> <Parameter name="cCommissionId"></Parameter> <Parameter name="documentno"></Parameter> <Parameter name="description"></Parameter> <Parameter name="startdate"></Parameter> <Parameter name="grandtotal"></Parameter> <Parameter name="processing"></Parameter> <Parameter name="cInvoiceId"></Parameter> <Parameter name="isactive"></Parameter> <Parameter name="processed"></Parameter> <Parameter name="adClientId"></Parameter> <Parameter name="cCommissionrunId"></Parameter> 
+    <Parameter name="createdby"></Parameter>
+    <Parameter name="updatedby"></Parameter>
+  </SqlMethod>
+
+  <SqlMethod name="delete" type="preparedStatement" return="rowCount">
+    <Sql><![CDATA[
+        DELETE FROM C_CommissionRun
+        WHERE C_CommissionRun.C_CommissionRun_ID = ? 
+        
+        AND C_CommissionRun.AD_Client_ID IN ('1') 
+        AND C_CommissionRun.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="param1"></Parameter>
+    
+        <Parameter name="adUserClient" type="replace" optional="true" after="C_CommissionRun.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="C_CommissionRun.AD_Org_ID IN (" text="'1'"/>
+  </SqlMethod>
+
+  <SqlMethod name="selectOrg" type="preparedStatement" return="string">
+    <SqlMethodComment>Select for relation</SqlMethodComment>
+    <Sql><![CDATA[ 
+        SELECT AD_ORG_ID
+          FROM C_CommissionRun
+         WHERE C_CommissionRun.C_CommissionRun_ID = ? 
+    ]]></Sql>
+    <Parameter name="id"></Parameter>
+  </SqlMethod>
+  
+  <SqlMethod name="getCurrentDBTimestamp" type="preparedStatement" return="string">
+    <Sql><![CDATA[ 
+        SELECT to_char(Updated, 'YYYYMMDDHH24MISS') as Updated_Time_Stamp
+          FROM C_CommissionRun
+         WHERE C_CommissionRun.C_CommissionRun_ID = ? 
+    ]]></Sql>
+    <Parameter name="id"></Parameter>
+  </SqlMethod>
+</SqlClass>

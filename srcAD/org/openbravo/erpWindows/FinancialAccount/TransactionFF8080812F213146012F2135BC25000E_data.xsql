@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SqlClass id="class" name="TransactionFF8080812F213146012F2135BC25000EData" package="org.openbravo.erpWindows.FinancialAccount">
+  <SqlClassComment>WAD Generated class</SqlClassComment>
+
+  <SqlMethod name="selectEdit" type="preparedStatement" return="multiple">
+    <SqlMethodComment>Select for edit</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT to_char(APRM_Finacc_Transaction_v.Created, ?) as created, 
+        (SELECT NAME FROM AD_USER u WHERE AD_USER_ID = APRM_Finacc_Transaction_v.CreatedBy) as CreatedByR, 
+        to_char(APRM_Finacc_Transaction_v.Updated, ?) as updated, 
+        to_char(APRM_Finacc_Transaction_v.Updated, 'YYYYMMDDHH24MISS') as Updated_Time_Stamp,  
+        APRM_Finacc_Transaction_v.UpdatedBy, 
+        (SELECT NAME FROM AD_USER u WHERE AD_USER_ID = APRM_Finacc_Transaction_v.UpdatedBy) as UpdatedByR,
+        APRM_Finacc_Transaction_v.Line, 
+APRM_Finacc_Transaction_v.Statementdate, 
+APRM_Finacc_Transaction_v.EM_APRM_Modify, 
+APRM_Finacc_Transaction_v.FIN_Payment_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.FIN_Payment_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table1.DocumentNo), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(table1.Paymentdate, 'DD-MM-YYYY')),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table1.Amount), ''))),'') ) END) AS FIN_Payment_IDR, 
+APRM_Finacc_Transaction_v.PaymentDocNo, 
+APRM_Finacc_Transaction_v.Status, 
+(CASE WHEN APRM_Finacc_Transaction_v.Status IS NULL THEN '' ELSE  ( COALESCE(TO_CHAR(list1.name),'') ) END) AS StatusR, 
+APRM_Finacc_Transaction_v.Depositamt, 
+APRM_Finacc_Transaction_v.Paymentamt, 
+COALESCE(APRM_Finacc_Transaction_v.Cleared, 'N') AS Cleared, 
+COALESCE(APRM_Finacc_Transaction_v.Reconciled, 'N') AS Reconciled, 
+APRM_Finacc_Transaction_v.C_Currency_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Currency_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table3.ISO_Code), ''))),'') ) END) AS C_Currency_IDR, 
+APRM_Finacc_Transaction_v.Trxtype, 
+(CASE WHEN APRM_Finacc_Transaction_v.Trxtype IS NULL THEN '' ELSE  ( COALESCE(TO_CHAR(list2.name),'') ) END) AS TrxtypeR, 
+APRM_Finacc_Transaction_v.Description, 
+APRM_Finacc_Transaction_v.C_Glitem_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Glitem_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table4.Name), ''))),'') ) END) AS C_Glitem_IDR, 
+APRM_Finacc_Transaction_v.DateAcct, 
+APRM_Finacc_Transaction_v.Posted, 
+list3.name as Posted_BTN, 
+APRM_Finacc_Transaction_v.FIN_Reconciliation_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.FIN_Reconciliation_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table5.DocumentNo), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(table5.Statementdate, 'DD-MM-YYYY')),'') ) END) AS FIN_Reconciliation_IDR, 
+APRM_Finacc_Transaction_v.Foreign_Amount, 
+COALESCE(APRM_Finacc_Transaction_v.Createdbyalgorithm, 'N') AS Createdbyalgorithm, 
+APRM_Finacc_Transaction_v.Delete_Btn, 
+APRM_Finacc_Transaction_v.Foreign_Currency_ID, 
+APRM_Finacc_Transaction_v.C_Bpartner_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Bpartner_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table6.Name), ''))),'') ) END) AS C_Bpartner_IDR, 
+APRM_Finacc_Transaction_v.M_Product_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.M_Product_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR((CASE WHEN tableTRL7.Name IS NULL THEN TO_CHAR(table7.Name) ELSE TO_CHAR(tableTRL7.Name) END)), ''))),'') ) END) AS M_Product_IDR, 
+APRM_Finacc_Transaction_v.C_Project_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Project_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table8.Value), ''))),'')  || ' - ' || COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table8.Name), ''))),'') ) END) AS C_Project_IDR, 
+APRM_Finacc_Transaction_v.C_Costcenter_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Costcenter_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table9.Name), ''))),'') ) END) AS C_Costcenter_IDR, 
+APRM_Finacc_Transaction_v.C_Campaign_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Campaign_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table10.Name), ''))),'') ) END) AS C_Campaign_IDR, 
+APRM_Finacc_Transaction_v.C_Activity_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Activity_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table11.Name), ''))),'') ) END) AS C_Activity_IDR, 
+APRM_Finacc_Transaction_v.C_Salesregion_ID, 
+(CASE WHEN APRM_Finacc_Transaction_v.C_Salesregion_ID IS NULL THEN '' ELSE  (COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table12.Name), ''))),'') ) END) AS C_Salesregion_IDR, 
+APRM_Finacc_Transaction_v.User1_ID, 
+APRM_Finacc_Transaction_v.User2_ID, 
+COALESCE(APRM_Finacc_Transaction_v.Processed, 'N') AS Processed, 
+APRM_Finacc_Transaction_v.FIN_Financial_Account_ID, 
+COALESCE(APRM_Finacc_Transaction_v.Isactive, 'N') AS Isactive, 
+APRM_Finacc_Transaction_v.AD_Org_ID, 
+APRM_Finacc_Transaction_v.AD_Client_ID, 
+APRM_Finacc_Transaction_v.FIN_Finacc_Transaction_ID, 
+APRM_Finacc_Transaction_v.Forced_Table_ID, 
+APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID, 
+APRM_Finacc_Transaction_v.Foreign_Convert_Rate, 
+COALESCE(APRM_Finacc_Transaction_v.Processing, 'N') AS Processing, 
+ 
+        ? AS LANGUAGE 
+        FROM APRM_Finacc_Transaction_v left join (select FIN_Payment_ID, DocumentNo, Paymentdate, C_Bpartner_ID, Amount from FIN_Payment) table1 on (APRM_Finacc_Transaction_v.FIN_Payment_ID = table1.FIN_Payment_ID) left join (select C_BPartner_ID, Name from C_BPartner) table2 on (table1.C_Bpartner_ID = table2.C_BPartner_ID) left join ad_ref_list_v list1 on (APRM_Finacc_Transaction_v.Status = list1.value and list1.ad_reference_id = '575BCB88A4694C27BC013DE9C73E6FE7' and list1.ad_language = ?)  left join (select C_Currency_ID, ISO_Code from C_Currency) table3 on (APRM_Finacc_Transaction_v.C_Currency_ID = table3.C_Currency_ID) left join ad_ref_list_v list2 on (APRM_Finacc_Transaction_v.Trxtype = list2.value and list2.ad_reference_id = '4EFC9773F30B4ACE97D225BD13CFF8CB' and list2.ad_language = ?)  left join (select C_Glitem_ID, Name from C_Glitem) table4 on (APRM_Finacc_Transaction_v.C_Glitem_ID = table4.C_Glitem_ID) left join ad_ref_list_v list3 on (list3.ad_reference_id = '234' and list3.ad_language = ?  AND APRM_Finacc_Transaction_v.Posted = TO_CHAR(list3.value)) left join (select FIN_Reconciliation_ID, DocumentNo, Statementdate from FIN_Reconciliation) table5 on (APRM_Finacc_Transaction_v.FIN_Reconciliation_ID = table5.FIN_Reconciliation_ID) left join (select C_BPartner_ID, Name from C_BPartner) table6 on (APRM_Finacc_Transaction_v.C_Bpartner_ID = table6.C_BPartner_ID) left join (select M_Product_ID, Name from M_Product) table7 on (APRM_Finacc_Transaction_v.M_Product_ID = table7.M_Product_ID) left join (select M_Product_ID,AD_Language, Name from M_Product_TRL) tableTRL7 on (table7.M_Product_ID = tableTRL7.M_Product_ID and tableTRL7.AD_Language = ?)  left join (select C_Project_ID, Value, Name from C_Project) table8 on (APRM_Finacc_Transaction_v.C_Project_ID = table8.C_Project_ID) left join (select C_Costcenter_ID, Name from C_Costcenter) table9 on (APRM_Finacc_Transaction_v.C_Costcenter_ID = table9.C_Costcenter_ID) left join (select C_Campaign_ID, Name from C_Campaign) table10 on (APRM_Finacc_Transaction_v.C_Campaign_ID = table10.C_Campaign_ID) left join (select C_Activity_ID, Name from C_Activity) table11 on (APRM_Finacc_Transaction_v.C_Activity_ID = table11.C_Activity_ID) left join (select C_Salesregion_ID, Name from C_Salesregion) table12 on (APRM_Finacc_Transaction_v.C_Salesregion_ID = table12.C_Salesregion_ID)
+        WHERE 2=2 
+
+        AND 1=1 
+        AND APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID = ? 
+        AND APRM_Finacc_Transaction_v.AD_Client_ID IN ('1') 
+           AND APRM_Finacc_Transaction_v.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="dateTimeFormat"></Parameter>
+    <Parameter name="dateTimeFormat"></Parameter>
+    
+    <Parameter name="paramLanguage"></Parameter>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+<Parameter name="paramLanguage"/>
+
+    <Parameter name="finFinancialAccountId" optional="true" after="AND 1=1 " id="paramKeyParent"> AND APRM_Finacc_Transaction_v.FIN_Financial_Account_ID = ? </Parameter>
+    <Parameter name="key"></Parameter>
+        <Parameter name="adUserClient" type="replace" optional="true" after="APRM_Finacc_Transaction_v.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="APRM_Finacc_Transaction_v.AD_Org_ID IN (" text="'1'"/>
+
+    <Field name="adUserClient" value="void"></Field>
+    <Field name="adOrgClient" value="void"></Field>
+    <Field name="createdby" value="void"></Field>
+    
+    <Field name="trBgcolor" value="void"></Field>
+    <Field name="totalCount" value="void"></Field>
+    <Field name="dateTimeFormat" value=""></Field>
+  </SqlMethod>
+  
+  
+
+  <SqlMethod name="set" type="constant" return="multiple">
+      <SqlMethodComment>Create a registry</SqlMethodComment>
+      <Sql></Sql>
+    <Parameter name="finFinancialAccountId" id="paramKeyParent"></Parameter>
+<Parameter name="foreignAmount"></Parameter><Parameter name="cCostcenterId"></Parameter><Parameter name="foreignCurrencyId"></Parameter><Parameter name="cSalesregionId"></Parameter><Parameter name="aprmFinaccTransactionVId"></Parameter><Parameter name="finFinaccTransactionId"></Parameter><Parameter name="adClientId"></Parameter><Parameter name="adOrgId"></Parameter><Parameter name="isactive"></Parameter><Parameter name="createdby"></Parameter><Parameter name="createdbyr"></Parameter><Parameter name="updatedby"></Parameter><Parameter name="updatedbyr"></Parameter><Parameter name="line"></Parameter><Parameter name="description"></Parameter><Parameter name="statementdate"></Parameter><Parameter name="trxtype"></Parameter><Parameter name="finPaymentId"></Parameter><Parameter name="cGlitemId"></Parameter><Parameter name="depositamt"></Parameter><Parameter name="paymentamt"></Parameter><Parameter name="cCurrencyId"></Parameter><Parameter name="finReconciliationId"></Parameter><Parameter name="status"></Parameter><Parameter name="createdbyalgorithm"></Parameter><Parameter name="posted"></Parameter><Parameter name="postedBtn"></Parameter><Parameter name="dateacct"></Parameter><Parameter name="processed"></Parameter><Parameter name="processing"></Parameter><Parameter name="user1Id"></Parameter><Parameter name="user2Id"></Parameter><Parameter name="cActivityId"></Parameter><Parameter name="cCampaignId"></Parameter><Parameter name="cProjectId"></Parameter><Parameter name="cleared"></Parameter><Parameter name="cBpartnerId"></Parameter><Parameter name="cBpartnerIdr"></Parameter><Parameter name="paymentdocno"></Parameter><Parameter name="reconciled"></Parameter><Parameter name="deleteBtn"></Parameter><Parameter name="forcedTableId"></Parameter><Parameter name="emAprmModify"></Parameter><Parameter name="mProductId"></Parameter><Parameter name="mProductIdr"></Parameter><Parameter name="foreignConvertRate"></Parameter>
+   </SqlMethod>
+
+
+   <SqlMethod name="selectAuxFF808081308851A40130887E45400063" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT COALESCE(ISRECEIPT,'Y') AS ISRECEIPT FROM FIN_PAYMENT WHERE FIN_PAYMENT_ID = ? 
+    ]]></Sql>
+
+<Parameter name="FIN_PAYMENT_ID"/>
+  </SqlMethod>
+
+
+
+   <SqlMethod name="selectActP15C8708DFC464C2D91286E59624FDD18_C_GLItem_ID" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT name FROM C_GLItem WHERE C_GLItem_ID=? 
+    ]]></Sql>
+
+<Parameter name="C_GLItem_ID"/>
+  </SqlMethod>
+
+
+
+   <SqlMethod name="selectDefA37C6F84AA243F50E040007F01006E35_0" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as Createdby FROM AD_User left join (select AD_User_ID, Name from AD_User) table2 on (AD_User.AD_User_ID = table2.AD_User_ID) WHERE AD_User.isActive='Y' AND AD_User.AD_User_ID = ?  
+    ]]></Sql>
+<Parameter name="CreatedbyR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDefA37C6F84AA263F50E040007F01006E35_1" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as Updatedby FROM AD_User left join (select AD_User_ID, Name from AD_User) table2 on (AD_User.AD_User_ID = table2.AD_User_ID) WHERE AD_User.isActive='Y' AND AD_User.AD_User_ID = ?  
+    ]]></Sql>
+<Parameter name="UpdatedbyR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDefA37C6F84AA283F50E040007F01006E35" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT COALESCE(MAX(LINE),0)+10 AS DefaultValue FROM FIN_FINACC_TRANSACTION WHERE FIN_Financial_Account_ID=? 
+    ]]></Sql>
+
+<Parameter name="FIN_Financial_Account_ID"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDefA37C6F84AA3E3F50E040007F01006E35_2" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR(table2.Name), ''))), '') ) as C_Bpartner_ID FROM C_BPartner left join (select C_BPartner_ID, Name from C_BPartner) table2 on (C_BPartner.C_BPartner_ID = table2.C_BPartner_ID) WHERE C_BPartner.isActive='Y' AND C_BPartner.C_BPartner_ID = ?  
+    ]]></Sql>
+<Parameter name="C_Bpartner_IDR"/>
+  </SqlMethod>
+
+   <SqlMethod name="selectDefBBA3DB68DBD844B29F1EEC9A04F112E8_3" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for auxiliar field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT  ( COALESCE(TO_CHAR(TO_CHAR(COALESCE(TO_CHAR((CASE WHEN tableTRL2.Name IS NULL THEN TO_CHAR(table2.Name) ELSE TO_CHAR(tableTRL2.Name) END)), ''))), '') ) as M_Product_ID FROM M_Product left join (select M_Product_ID, Name from M_Product) table2 on (M_Product.M_Product_ID = table2.M_Product_ID)left join (select M_Product_ID,AD_Language, Name from M_Product_TRL) tableTRL2 on (table2.M_Product_ID = tableTRL2.M_Product_ID and tableTRL2.AD_Language = ?)  WHERE M_Product.isActive='Y' AND M_Product.M_Product_ID = ?  
+    ]]></Sql>
+<Parameter name="paramLanguage"/>
+<Parameter name="M_Product_IDR"/>
+  </SqlMethod>
+
+
+
+  <SqlMethod name="selectParentID" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>return the parent ID</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT APRM_Finacc_Transaction_v.FIN_Financial_Account_ID AS NAME
+        FROM APRM_Finacc_Transaction_v
+        WHERE APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID = ?
+    ]]></Sql>
+    <Parameter name="key"></Parameter>
+  </SqlMethod>
+
+   <SqlMethod name="selectParent" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for parent field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT (TO_CHAR(COALESCE(TO_CHAR(table2.ISO_Code), '')) || ' - ' || TO_CHAR(COALESCE(TO_CHAR(table1.Name), ''))) AS NAME FROM FIN_Financial_Account left join (select FIN_Financial_Account_ID, C_Currency_ID, Name from FIN_Financial_Account) table1 on (FIN_Financial_Account.FIN_Financial_Account_ID = table1.FIN_Financial_Account_ID) left join (select C_Currency_ID, ISO_Code from C_Currency) table2 on (table1.C_Currency_ID = table2.C_Currency_ID) WHERE FIN_Financial_Account.FIN_Financial_Account_ID = ?  
+    ]]></Sql>
+<Parameter name="finFinancialAccountId"/>
+
+  </SqlMethod>
+
+
+
+
+   <SqlMethod name="selectParentTrl" type="preparedStatement" return="String" default="">
+    <SqlMethodComment>Select for parent field</SqlMethodComment>
+    <Sql><![CDATA[
+        SELECT (TO_CHAR(COALESCE(TO_CHAR(table2.ISO_Code), '')) || ' - ' || TO_CHAR(COALESCE(TO_CHAR(table1.Name), ''))) AS NAME FROM FIN_Financial_Account left join (select FIN_Financial_Account_ID, C_Currency_ID, Name from FIN_Financial_Account) table1 on (FIN_Financial_Account.FIN_Financial_Account_ID = table1.FIN_Financial_Account_ID) left join (select C_Currency_ID, ISO_Code from C_Currency) table2 on (table1.C_Currency_ID = table2.C_Currency_ID) WHERE FIN_Financial_Account.FIN_Financial_Account_ID = ?  
+    ]]></Sql>
+<Parameter name="finFinancialAccountId"/>
+
+  </SqlMethod>
+
+
+
+
+
+
+
+
+  <SqlMethod name="update" type="preparedStatement" return="rowCount" static="false" connection="true">
+    <Sql><![CDATA[
+        UPDATE APRM_Finacc_Transaction_v
+        SET Line = TO_NUMBER(?) , Statementdate = TO_DATE(?) , EM_APRM_Modify = (?) , FIN_Payment_ID = (?) , PaymentDocNo = (?) , Status = (?) , Depositamt = TO_NUMBER(?) , Paymentamt = TO_NUMBER(?) , Cleared = (?) , Reconciled = (?) , C_Currency_ID = (?) , Trxtype = (?) , Description = (?) , C_Glitem_ID = (?) , DateAcct = TO_DATE(?) , Posted = (?) , FIN_Reconciliation_ID = (?) , Foreign_Amount = TO_NUMBER(?) , Createdbyalgorithm = (?) , Delete_Btn = (?) , Foreign_Currency_ID = (?) , C_Bpartner_ID = (?) , M_Product_ID = (?) , C_Project_ID = (?) , C_Costcenter_ID = (?) , C_Campaign_ID = (?) , C_Activity_ID = (?) , C_Salesregion_ID = (?) , User1_ID = (?) , User2_ID = (?) , Processed = (?) , FIN_Financial_Account_ID = (?) , Isactive = (?) , AD_Org_ID = (?) , AD_Client_ID = (?) , FIN_Finacc_Transaction_ID = (?) , Forced_Table_ID = (?) , Aprm_Finacc_Transaction_V_ID = (?) , Foreign_Convert_Rate = TO_NUMBER(?) , Processing = (?) , updated = now(), updatedby = ? 
+        WHERE APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID = ? 
+                 AND APRM_Finacc_Transaction_v.FIN_Financial_Account_ID = ? 
+        AND APRM_Finacc_Transaction_v.AD_Client_ID IN ('1') 
+        AND APRM_Finacc_Transaction_v.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="line"></Parameter> <Parameter name="statementdate"></Parameter> <Parameter name="emAprmModify"></Parameter> <Parameter name="finPaymentId"></Parameter> <Parameter name="paymentdocno"></Parameter> <Parameter name="status"></Parameter> <Parameter name="depositamt"></Parameter> <Parameter name="paymentamt"></Parameter> <Parameter name="cleared"></Parameter> <Parameter name="reconciled"></Parameter> <Parameter name="cCurrencyId"></Parameter> <Parameter name="trxtype"></Parameter> <Parameter name="description"></Parameter> <Parameter name="cGlitemId"></Parameter> <Parameter name="dateacct"></Parameter> <Parameter name="posted"></Parameter> <Parameter name="finReconciliationId"></Parameter> <Parameter name="foreignAmount"></Parameter> <Parameter name="createdbyalgorithm"></Parameter> <Parameter name="deleteBtn"></Parameter> <Parameter name="foreignCurrencyId"></Parameter> <Parameter name="cBpartnerId"></Parameter> <Parameter name="mProductId"></Parameter> <Parameter name="cProjectId"></Parameter> <Parameter name="cCostcenterId"></Parameter> <Parameter name="cCampaignId"></Parameter> <Parameter name="cActivityId"></Parameter> <Parameter name="cSalesregionId"></Parameter> <Parameter name="user1Id"></Parameter> <Parameter name="user2Id"></Parameter> <Parameter name="processed"></Parameter> <Parameter name="finFinancialAccountId"></Parameter> <Parameter name="isactive"></Parameter> <Parameter name="adOrgId"></Parameter> <Parameter name="adClientId"></Parameter> <Parameter name="finFinaccTransactionId"></Parameter> <Parameter name="forcedTableId"></Parameter> <Parameter name="aprmFinaccTransactionVId"></Parameter> <Parameter name="foreignConvertRate"></Parameter> <Parameter name="processing"></Parameter> 
+    <Parameter name="updatedby"></Parameter>
+    <Parameter id="paramKey" name="aprmFinaccTransactionVId"></Parameter>
+    
+    <Parameter name="finFinancialAccountId" id="paramKeyParent"></Parameter>
+        <Parameter name="adUserClient" type="replace" optional="true" after="APRM_Finacc_Transaction_v.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="APRM_Finacc_Transaction_v.AD_Org_ID IN (" text="'1'"/>
+  </SqlMethod>
+
+  <SqlMethod name="insert" type="preparedStatement" return="rowCount" static="false" connection="true">
+    <Sql><![CDATA[
+        INSERT INTO APRM_Finacc_Transaction_v 
+        (Line, Statementdate, EM_APRM_Modify, FIN_Payment_ID, PaymentDocNo, Status, Depositamt, Paymentamt, Cleared, Reconciled, C_Currency_ID, Trxtype, Description, C_Glitem_ID, DateAcct, Posted, FIN_Reconciliation_ID, Foreign_Amount, Createdbyalgorithm, Delete_Btn, Foreign_Currency_ID, C_Bpartner_ID, M_Product_ID, C_Project_ID, C_Costcenter_ID, C_Campaign_ID, C_Activity_ID, C_Salesregion_ID, User1_ID, User2_ID, Processed, FIN_Financial_Account_ID, Isactive, AD_Org_ID, AD_Client_ID, FIN_Finacc_Transaction_ID, Forced_Table_ID, Aprm_Finacc_Transaction_V_ID, Foreign_Convert_Rate, Processing, created, createdby, updated, updatedBy)
+        VALUES (TO_NUMBER(?), TO_DATE(?), (?), (?), (?), (?), TO_NUMBER(?), TO_NUMBER(?), (?), (?), (?), (?), (?), (?), TO_DATE(?), (?), (?), TO_NUMBER(?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), TO_NUMBER(?), (?), now(), ?, now(), ?)
+    ]]></Sql>
+    <Parameter name="line"></Parameter> <Parameter name="statementdate"></Parameter> <Parameter name="emAprmModify"></Parameter> <Parameter name="finPaymentId"></Parameter> <Parameter name="paymentdocno"></Parameter> <Parameter name="status"></Parameter> <Parameter name="depositamt"></Parameter> <Parameter name="paymentamt"></Parameter> <Parameter name="cleared"></Parameter> <Parameter name="reconciled"></Parameter> <Parameter name="cCurrencyId"></Parameter> <Parameter name="trxtype"></Parameter> <Parameter name="description"></Parameter> <Parameter name="cGlitemId"></Parameter> <Parameter name="dateacct"></Parameter> <Parameter name="posted"></Parameter> <Parameter name="finReconciliationId"></Parameter> <Parameter name="foreignAmount"></Parameter> <Parameter name="createdbyalgorithm"></Parameter> <Parameter name="deleteBtn"></Parameter> <Parameter name="foreignCurrencyId"></Parameter> <Parameter name="cBpartnerId"></Parameter> <Parameter name="mProductId"></Parameter> <Parameter name="cProjectId"></Parameter> <Parameter name="cCostcenterId"></Parameter> <Parameter name="cCampaignId"></Parameter> <Parameter name="cActivityId"></Parameter> <Parameter name="cSalesregionId"></Parameter> <Parameter name="user1Id"></Parameter> <Parameter name="user2Id"></Parameter> <Parameter name="processed"></Parameter> <Parameter name="finFinancialAccountId"></Parameter> <Parameter name="isactive"></Parameter> <Parameter name="adOrgId"></Parameter> <Parameter name="adClientId"></Parameter> <Parameter name="finFinaccTransactionId"></Parameter> <Parameter name="forcedTableId"></Parameter> <Parameter name="aprmFinaccTransactionVId"></Parameter> <Parameter name="foreignConvertRate"></Parameter> <Parameter name="processing"></Parameter> 
+    <Parameter name="createdby"></Parameter>
+    <Parameter name="updatedby"></Parameter>
+  </SqlMethod>
+
+  <SqlMethod name="delete" type="preparedStatement" return="rowCount">
+    <Sql><![CDATA[
+        DELETE FROM APRM_Finacc_Transaction_v
+        WHERE APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID = ? 
+                 AND APRM_Finacc_Transaction_v.FIN_Financial_Account_ID = ? 
+        AND APRM_Finacc_Transaction_v.AD_Client_ID IN ('1') 
+        AND APRM_Finacc_Transaction_v.AD_Org_ID IN ('1') 
+    ]]></Sql>
+    <Parameter name="param1"></Parameter>
+        <Parameter name="finFinancialAccountId" id="paramKeyParent"></Parameter>
+        <Parameter name="adUserClient" type="replace" optional="true" after="APRM_Finacc_Transaction_v.AD_Client_ID IN (" text="'1'"/>
+        <Parameter name="adOrgClient" type="replace" optional="true" after="APRM_Finacc_Transaction_v.AD_Org_ID IN (" text="'1'"/>
+  </SqlMethod>
+
+  <SqlMethod name="selectOrg" type="preparedStatement" return="string">
+    <SqlMethodComment>Select for relation</SqlMethodComment>
+    <Sql><![CDATA[ 
+        SELECT AD_ORG_ID
+          FROM APRM_Finacc_Transaction_v
+         WHERE APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID = ? 
+    ]]></Sql>
+    <Parameter name="id"></Parameter>
+  </SqlMethod>
+  
+  <SqlMethod name="getCurrentDBTimestamp" type="preparedStatement" return="string">
+    <Sql><![CDATA[ 
+        SELECT to_char(Updated, 'YYYYMMDDHH24MISS') as Updated_Time_Stamp
+          FROM APRM_Finacc_Transaction_v
+         WHERE APRM_Finacc_Transaction_v.Aprm_Finacc_Transaction_V_ID = ? 
+    ]]></Sql>
+    <Parameter name="id"></Parameter>
+  </SqlMethod>
+</SqlClass>
