@@ -1,0 +1,17 @@
+--- keyboard.js
++++ keyboard.js
+@@ -365,10 +365,11 @@
+     }
+   },
+ 
+-  virtualKeypressHandler: function (key) {
+-
+-    this.waterfall('onCloseAllPopups');
++  virtualKeypressHandler: function (key, options) {
+     var t;
++    if (options && options.fromPopup) {
++      this.waterfall('onCloseAllPopups');
++    }
+     if (key.match(this.keyMatcher) || (key === 'del')) {
+       this.writeCharacter(key);
+     } else {

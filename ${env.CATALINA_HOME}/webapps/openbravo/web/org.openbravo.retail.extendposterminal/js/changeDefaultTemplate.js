@@ -1,0 +1,1 @@
+OB.OBPOSPointOfSale.Print.ReceiptTemplate = '../org.openbravo.retail.extendposterminal/receipts/printreceipt.xml';
